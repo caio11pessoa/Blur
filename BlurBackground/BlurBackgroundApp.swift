@@ -11,7 +11,7 @@ import SwiftUI
 struct BlurBackgroundApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ExampleView()
         }
     }
 }

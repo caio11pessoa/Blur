@@ -21,7 +21,7 @@ struct DanishinChallenge: View {
         gradient: Gradient(stops: [
             .init(color: .black, location: 0),
             .init(color: .black, location: blurPercentage),
-            .init(color: .clear, location: blurPercentage + 0.1)
+            .init(color: .clear, location: blurPercentageFinished)
         ]),
         startPoint: .bottom,
         endPoint: .top
@@ -47,7 +47,7 @@ struct DanishinChallenge: View {
                         .blendMode(.destinationOut)
                 }
                 .compositingGroup()
-
+                
                 wave ? Image(systemName: "speaker.wave.2.circle.fill") : Image(systemName: "speaker.slash.circle.fill")
             }
             .font(.system(size: 32))
@@ -58,6 +58,10 @@ struct DanishinChallenge: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                // BackgroundBlur(Image){
+                // content
+                //                }
+                //.blur
                 Image(.wallPaper)
                     .resizable()
                 Image(.wallPaper)
@@ -135,7 +139,7 @@ struct DanishinChallenge: View {
                             Image(systemName: "circle.fill")
                                 .foregroundStyle(.divider)
                                 .font(.system(size: 32))
-
+                            
                             Image(systemName: "waveform")
                                 .font(.system(size: 16))
                                 .blendMode(.destinationOut)
