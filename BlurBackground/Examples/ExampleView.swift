@@ -32,8 +32,8 @@ struct ExampleView: View {
             }
             .padding()
         }
-        .orientation(.bottomToTop)
-        .ignoresSafeArea()
+        .orientation(.topToBottom)
+//        .ignoresSafeArea()
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+fileprivate struct ContentView: View {
     @State var isExpanded: Bool = false
     var body: some View {
         ZStack{

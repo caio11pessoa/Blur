@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct QueIsso: View {
+fileprivate struct QueIsso: View {
     
     let gradient = LinearGradient(
         gradient: Gradient(stops: [

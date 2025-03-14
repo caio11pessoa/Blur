@@ -6,17 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3441AA1C2D829AD3003BBCF1 /* GradientOrientationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA102D829AD2003BBCF1 /* GradientOrientationModifier.swift */; };
+		3441AA1D2D829AD3003BBCF1 /* BackgroundBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA152D829AD2003BBCF1 /* BackgroundBlur.swift */; };
+		3441AA1E2D829AD3003BBCF1 /* BlurBackgroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA162D829AD2003BBCF1 /* BlurBackgroundApp.swift */; };
+		3441AA1F2D829AD3003BBCF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA172D829AD2003BBCF1 /* ContentView.swift */; };
+		3441AA202D829AD3003BBCF1 /* DanishinChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA182D829AD2003BBCF1 /* DanishinChallenge.swift */; };
+		3441AA212D829AD3003BBCF1 /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA192D829AD2003BBCF1 /* ExampleView.swift */; };
+		3441AA222D829AD3003BBCF1 /* QueIsso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA1A2D829AD2003BBCF1 /* QueIsso.swift */; };
+		3441AA232D829AD3003BBCF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3441AA122D829AD2003BBCF1 /* Preview Assets.xcassets */; };
+		3441AA242D829AD3003BBCF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3441AA142D829AD2003BBCF1 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		3441AA102D829AD2003BBCF1 /* GradientOrientationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientOrientationModifier.swift; sourceTree = "<group>"; };
+		3441AA122D829AD2003BBCF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3441AA142D829AD2003BBCF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3441AA152D829AD2003BBCF1 /* BackgroundBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBlur.swift; sourceTree = "<group>"; };
+		3441AA162D829AD2003BBCF1 /* BlurBackgroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurBackgroundApp.swift; sourceTree = "<group>"; };
+		3441AA172D829AD2003BBCF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3441AA182D829AD2003BBCF1 /* DanishinChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanishinChallenge.swift; sourceTree = "<group>"; };
+		3441AA192D829AD2003BBCF1 /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
+		3441AA1A2D829AD2003BBCF1 /* QueIsso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueIsso.swift; sourceTree = "<group>"; };
 		34C048AC2D80B30000EAF31A /* BlurBackground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurBackground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		34C048AE2D80B30000EAF31A /* BlurBackground */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = BlurBackground;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		34C048A92D80B30000EAF31A /* Frameworks */ = {
@@ -29,10 +42,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3441AA112D829AD2003BBCF1 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				3441AA102D829AD2003BBCF1 /* GradientOrientationModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		3441AA132D829AD2003BBCF1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3441AA122D829AD2003BBCF1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3441AA1B2D829AD2003BBCF1 /* BlurBackground */ = {
+			isa = PBXGroup;
+			children = (
+				3441AA262D829BE5003BBCF1 /* Examples */,
+				3441AA252D829ADA003BBCF1 /* Components */,
+				3441AA112D829AD2003BBCF1 /* Modifiers */,
+				3441AA132D829AD2003BBCF1 /* Preview Content */,
+				3441AA142D829AD2003BBCF1 /* Assets.xcassets */,
+				3441AA162D829AD2003BBCF1 /* BlurBackgroundApp.swift */,
+			);
+			path = BlurBackground;
+			sourceTree = "<group>";
+		};
+		3441AA252D829ADA003BBCF1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3441AA152D829AD2003BBCF1 /* BackgroundBlur.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3441AA262D829BE5003BBCF1 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				3441AA192D829AD2003BBCF1 /* ExampleView.swift */,
+				3441AA1A2D829AD2003BBCF1 /* QueIsso.swift */,
+				3441AA172D829AD2003BBCF1 /* ContentView.swift */,
+				3441AA182D829AD2003BBCF1 /* DanishinChallenge.swift */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		34C048A32D80B30000EAF31A = {
 			isa = PBXGroup;
 			children = (
-				34C048AE2D80B30000EAF31A /* BlurBackground */,
+				3441AA1B2D829AD2003BBCF1 /* BlurBackground */,
 				34C048AD2D80B30000EAF31A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +120,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				34C048AE2D80B30000EAF31A /* BlurBackground */,
 			);
 			name = BlurBackground;
 			packageProductDependencies = (
@@ -109,6 +167,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3441AA232D829AD3003BBCF1 /* Preview Assets.xcassets in Resources */,
+				3441AA242D829AD3003BBCF1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3441AA1C2D829AD3003BBCF1 /* GradientOrientationModifier.swift in Sources */,
+				3441AA1D2D829AD3003BBCF1 /* BackgroundBlur.swift in Sources */,
+				3441AA1E2D829AD3003BBCF1 /* BlurBackgroundApp.swift in Sources */,
+				3441AA1F2D829AD3003BBCF1 /* ContentView.swift in Sources */,
+				3441AA202D829AD3003BBCF1 /* DanishinChallenge.swift in Sources */,
+				3441AA212D829AD3003BBCF1 /* ExampleView.swift in Sources */,
+				3441AA222D829AD3003BBCF1 /* QueIsso.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

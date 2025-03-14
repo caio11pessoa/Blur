@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DanishinChallenge: View {
+fileprivate struct DanishinChallenge: View {
     @State var blurPercentage: CGFloat = 0.45
     var blurPercentageFinished: CGFloat {
         if blurPercentage <= 0.9 {

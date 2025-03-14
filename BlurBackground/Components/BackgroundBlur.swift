@@ -1,10 +1,3 @@
-//
-//  BackgroundBlur.swift
-//  BlurBackground
-//
-//  Created by Caio de Almeida Pessoa on 13/03/25.
-//
-
 import SwiftUI
 
 enum GradientDirection {
@@ -12,39 +5,46 @@ enum GradientDirection {
     case bottomToTop
 }
 
-///Use com ignoreSafeArea
-struct BackgroundBlur<Content: View>: View {
-    @State private var viewSize: CGSize = .zero
-    @State private var contentSize: CGSize = .zero
-    @Environment(\.gradientDirection) private var gradientDirection // Agora pode ser alterado
+struct CustomImage {
+    let image: Image
+    let aspectRatio: ContentMode
+    
+}
 
-    var blurPercentage: CGFloat {
-        guard viewSize.height > 0 else { return 0.45 } // Evita divisão por zero
-        return contentSize.height / viewSize.height
+/// Use com `ignoresSafeArea`
+struct BackgroundBlur<Content: View>: View {
+    @State private var containerSize: CGSize = .zero
+    @State private var contentSize: CGSize = .zero
+    private var contentMode: ContentMode = .fill
+    @Environment(\.gradientDirection) private var gradientDirection
+    
+    var blurCoverageRatio: CGFloat {
+        guard containerSize.height > 0 else { return 0.45 }
+        return contentSize.height / containerSize.height
     }
     
-    var blurPercentageFinished: CGFloat {
-        min(blurPercentage + 0.1, 1) // Garante que não ultrapasse 1
+    var blurCoverageEndRatio: CGFloat {
+        min(blurCoverageRatio + 0.1, 1)
     }
     
-    var gradientDown: LinearGradient {
+    var bottomToTopGradient: LinearGradient {
         LinearGradient(
             gradient: Gradient(stops: [
                 .init(color: .black, location: 0),
-                .init(color: .black, location: blurPercentage),
-                .init(color: .clear, location: blurPercentageFinished)
+                .init(color: .black, location: blurCoverageRatio),
+                .init(color: .clear, location: blurCoverageEndRatio)
             ]),
             startPoint: .bottom,
             endPoint: .top
         )
     }
     
-    var gradientUp: LinearGradient {
+    var topToBottomGradient: LinearGradient {
         LinearGradient(
             gradient: Gradient(stops: [
                 .init(color: .black, location: 0),
-                .init(color: .black, location: blurPercentage),
-                .init(color: .clear, location: blurPercentageFinished)
+                .init(color: .black, location: blurCoverageRatio),
+                .init(color: .clear, location: blurCoverageEndRatio)
             ]),
             startPoint: .top,
             endPoint: .bottom
@@ -52,41 +52,53 @@ struct BackgroundBlur<Content: View>: View {
     }
     
     let content: Content
-    let image: Image
+    let backgroundImage: Image
     
-    init(_ image: Image, @ViewBuilder content: @escaping () -> Content) {
-        self.image = image
+    init(_ backgroundImage: Image, @ViewBuilder content: @escaping () -> Content) {
+        self.backgroundImage = backgroundImage
         self.content = content()
     }
     
-    var getZstackAlignment: Alignment {
+    init(_ customImage: CustomImage, @ViewBuilder content: @escaping () -> Content) {
+        self.backgroundImage = customImage.image
+        self.contentMode = customImage.aspectRatio
+        self.content = content()
+    }
+    
+    var zStackAlignment: Alignment {
         switch gradientDirection {
         case .topToBottom:
-            .top
+            return .top
         case .bottomToTop:
-            .bottom
+            return .bottom
         }
     }
     
-    var getGradientMask: LinearGradient {
+    var gradientMask: LinearGradient {
         switch gradientDirection {
         case .topToBottom:
-            gradientUp
+            return topToBottomGradient
         case .bottomToTop:
-            gradientDown
+            return bottomToTopGradient
         }
     }
     
     var body: some View {
-        ZStack(alignment: getZstackAlignment) {
-            image
+        ZStack(alignment: zStackAlignment) {
+            backgroundImage
                 .resizable()
-            Image(.wallPaper)
+                .aspectRatio(contentMode: contentMode)
+                .frame(width:UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            
+            backgroundImage
                 .resizable()
+                .aspectRatio(contentMode: contentMode)
                 .blur(radius: 25)
                 .padding(-35)
                 .clipped()
-                .mask(getGradientMask)
+                .mask(gradientMask)
+                .frame(width:UIScreen.main.bounds.width, height: UIScreen.main.bounds.height )
+            
             content
                 .background(
                     GeometryReader { geometry in
@@ -108,12 +120,12 @@ struct BackgroundBlur<Content: View>: View {
             GeometryReader { geometry in
                 Color.clear
                     .onAppear {
-                        viewSize = geometry.size
+                        containerSize = geometry.size
                     }
                     .onChange(of: geometry.size) { oldSize, newSize in
                         if oldSize != newSize {
                             withAnimation {
-                                viewSize = newSize
+                                containerSize = newSize
                             }
                         }
                     }
@@ -122,10 +134,9 @@ struct BackgroundBlur<Content: View>: View {
     }
 }
 
-
 #Preview {
-    BackgroundBlur(background: Image(.wallPaper)) {
-        VStack{
+    BackgroundBlur(Image(.background)) {
+        VStack {
             ScrollView {
                 Text("Content!")
                 Text("Content!")
@@ -142,7 +153,6 @@ struct BackgroundBlur<Content: View>: View {
             }
             .foregroundStyle(.white)
             .frame(height: 300)
-            
         }
     }
     .ignoresSafeArea()
